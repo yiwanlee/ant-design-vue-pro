@@ -18,8 +18,8 @@ export default {
   primaryColor: '#F5222D', // primary color of ant design
   layout: 'sidemenu', // nav menu position: `sidemenu` or `topmenu`
   contentWidth: 'Fluid', // layout of content: `Fluid` or `Fixed`, only works when layout is topmenu
-  fixedHeader: false, // sticky header
-  fixSiderbar: false, // sticky siderbar
+  fixedHeader: true, // sticky header
+  fixSiderbar: true, // sticky siderbar
   colorWeak: false, // 色弱模式
   multiTab: true, // 开启多标签模式
   menu: {
