@@ -22,3 +22,5 @@ export const NAV_THEME = {
   LIGHT: 'light',
   DARK: 'dark'
 }
+
+export const ROUTER_ACTIVE = 'router_active' // 路由刷新辅助变量

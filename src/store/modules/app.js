@@ -12,7 +12,9 @@ import {
   TOGGLE_WEAK,
   TOGGLE_MULTI_TAB,
   // i18n
-  APP_LANGUAGE
+  APP_LANGUAGE,
+  // 路由刷新辅助变量
+  ROUTER_ACTIVE
 } from '@/store/mutation-types'
 import { loadLanguageAsync } from '@/locales'
 
@@ -30,7 +32,9 @@ const app = {
     weak: false,
     multiTab: true,
     lang: 'en-US',
-    _antLocale: {}
+    _antLocale: {},
+    // 路由刷新辅助变量
+    routerActive: true
   },
   mutations: {
     [SIDEBAR_TYPE]: (state, type) => {
@@ -80,6 +84,10 @@ const app = {
     [TOGGLE_MULTI_TAB]: (state, bool) => {
       storage.set(TOGGLE_MULTI_TAB, bool)
       state.multiTab = bool
+    },
+    // 路由刷新辅助变量
+    [ROUTER_ACTIVE]: (state) => {
+      state.routerActive = !state.routerActive
     }
   },
   actions: {

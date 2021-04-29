@@ -31,7 +31,7 @@
     <template v-slot:headerContentRender>
       <div>
         <a-tooltip title="刷新页面">
-          <a-icon type="reload" style="font-size: 18px;cursor: pointer;" @click="() => { $message.info('只是一个DEMO') }" />
+          <a-icon :type="routerActive?'reload':'loading'" :spin="!routerActive" style="font-size: 18px;cursor: pointer;" @click="handleRefresh" />
         </a-tooltip>
       </div>
     </template>
@@ -48,7 +48,7 @@
     <template v-slot:footerRender>
       <global-footer />
     </template>
-    <router-view />
+    <router-view v-if="routerActive" />
   </pro-layout>
 </template>
 
@@ -56,7 +56,7 @@
 import { SettingDrawer, updateTheme } from '@ant-design-vue/pro-layout'
 import { i18nRender } from '@/locales'
 import { mapState } from 'vuex'
-import { CONTENT_WIDTH_TYPE, SIDEBAR_TYPE, TOGGLE_MOBILE_TYPE } from '@/store/mutation-types'
+import { CONTENT_WIDTH_TYPE, SIDEBAR_TYPE, TOGGLE_MOBILE_TYPE, ROUTER_ACTIVE } from '@/store/mutation-types'
 
 import defaultSettings from '@/config/defaultSettings'
 import RightContent from '@/components/GlobalHeader/RightContent'
@@ -110,7 +110,9 @@ export default {
   computed: {
     ...mapState({
       // 动态主路由
-      mainMenu: state => state.permission.addRouters
+      mainMenu: state => state.permission.addRouters,
+      // 路由刷新辅助变量
+      routerActive: state => state.app.routerActive
     })
   },
   created () {
@@ -175,6 +177,12 @@ export default {
           }
           break
       }
+    },
+    handleRefresh () {
+      this.$store.commit(ROUTER_ACTIVE)
+      setTimeout(() => {
+        this.$store.commit(ROUTER_ACTIVE)
+      }, 500)
     }
   }
 }
