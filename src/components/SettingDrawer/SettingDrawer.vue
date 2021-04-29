@@ -7,10 +7,8 @@
       :closable="false"
       :visible="visible"
       :drawer-style="{ position: 'absolute' }"
-      style="position: absolute"
-    >
+      style="position: absolute">
       <div class="setting-drawer-index-content">
-
         <div :style="{ marginBottom: '24px' }">
           <h3 class="setting-drawer-index-title">整体风格设置</h3>
 
@@ -20,9 +18,9 @@
                 暗色菜单风格
               </template>
               <div class="setting-drawer-index-item" @click="handleMenuTheme('dark')">
-                <img src="https://gw.alipayobjects.com/zos/rmsportal/LCkqqYNmvBEbokSDscrm.svg" alt="dark">
-                <div class="setting-drawer-index-selectIcon" v-if="navTheme === 'dark'">
-                  <a-icon type="check"/>
+                <img src="https://gw.alipayobjects.com/zos/rmsportal/LCkqqYNmvBEbokSDscrm.svg" alt="dark" />
+                <div class="setting-drawer-index-selectIcon" v-if="theme === 'dark'">
+                  <a-icon type="check" />
                 </div>
               </div>
             </a-tooltip>
@@ -32,9 +30,9 @@
                 亮色菜单风格
               </template>
               <div class="setting-drawer-index-item" @click="handleMenuTheme('light')">
-                <img src="https://gw.alipayobjects.com/zos/rmsportal/jpRkZQMyYRryryPNtyIC.svg" alt="light">
-                <div class="setting-drawer-index-selectIcon" v-if="navTheme !== 'dark'">
-                  <a-icon type="check"/>
+                <img src="https://gw.alipayobjects.com/zos/rmsportal/jpRkZQMyYRryryPNtyIC.svg" alt="light" />
+                <div class="setting-drawer-index-selectIcon" v-if="theme !== 'dark'">
+                  <a-icon type="check" />
                 </div>
               </div>
             </a-tooltip>
@@ -53,7 +51,6 @@
                 <a-icon type="check" v-if="item.color === primaryColor"></a-icon>
               </a-tag>
             </a-tooltip>
-
           </div>
         </div>
         <a-divider />
@@ -67,9 +64,9 @@
                 侧边栏导航
               </template>
               <div class="setting-drawer-index-item" @click="handleLayout('sidemenu')">
-                <img src="https://gw.alipayobjects.com/zos/rmsportal/JopDzEhOqwOjeNTXkoje.svg" alt="sidemenu">
-                <div class="setting-drawer-index-selectIcon" v-if="layoutMode === 'sidemenu'">
-                  <a-icon type="check"/>
+                <img src="https://gw.alipayobjects.com/zos/rmsportal/JopDzEhOqwOjeNTXkoje.svg" alt="sidemenu" />
+                <div class="setting-drawer-index-selectIcon" v-if="layout === 'sidemenu'">
+                  <a-icon type="check" />
                 </div>
               </div>
             </a-tooltip>
@@ -79,9 +76,9 @@
                 顶部栏导航
               </template>
               <div class="setting-drawer-index-item" @click="handleLayout('topmenu')">
-                <img src="https://gw.alipayobjects.com/zos/rmsportal/KDNDBbriJhLwuqMoxcAr.svg" alt="topmenu">
-                <div class="setting-drawer-index-selectIcon" v-if="layoutMode !== 'sidemenu'">
-                  <a-icon type="check"/>
+                <img src="https://gw.alipayobjects.com/zos/rmsportal/KDNDBbriJhLwuqMoxcAr.svg" alt="topmenu" />
+                <div class="setting-drawer-index-selectIcon" v-if="layout !== 'sidemenu'">
+                  <a-icon type="check" />
                 </div>
               </div>
             </a-tooltip>
@@ -95,7 +92,7 @@
                   </template>
                   <a-select size="small" style="width: 80px;" :defaultValue="contentWidth" @change="handleContentWidthChange">
                     <a-select-option value="Fixed">固定</a-select-option>
-                    <a-select-option value="Fluid" v-if="layoutMode !== 'sidemenu'">流式</a-select-option>
+                    <a-select-option value="Fluid" v-if="layout !== 'sidemenu'">流式</a-select-option>
                   </a-select>
                 </a-tooltip>
                 <a-list-item-meta>
@@ -117,10 +114,10 @@
                   </a-tooltip>
                 </a-list-item-meta>
               </a-list-item>
-              <a-list-item >
-                <a-switch slot="actions" size="small" :disabled="(layoutMode === 'topmenu')" :defaultChecked="fixSiderbar" @change="handleFixSiderbar" />
+              <a-list-item>
+                <a-switch slot="actions" size="small" :disabled="layout === 'topmenu'" :defaultChecked="fixSiderbar" @change="handleFixSiderbar" />
                 <a-list-item-meta>
-                  <div slot="title" :style="{ textDecoration: layoutMode === 'topmenu' ? 'line-through' : 'unset' }">固定侧边菜单</div>
+                  <div slot="title" :style="{ textDecoration: layout === 'topmenu' ? 'line-through' : 'unset' }">固定侧边菜单</div>
                 </a-list-item-meta>
               </a-list-item>
             </a-list>
@@ -149,11 +146,7 @@
         </div>
         <a-divider />
         <div :style="{ marginBottom: '24px' }">
-          <a-button
-            @click="doCopy"
-            icon="copy"
-            block
-          >拷贝设置</a-button>
+          <a-button @click="doCopy" icon="copy" block>拷贝设置</a-button>
           <a-alert type="warning" :style="{ marginTop: '24px' }">
             <span slot="message">
               配置栏只在开发环境用于预览，生产环境不会展现，请手动修改配置文件。修改配置文件后，需要清空本地缓存和LocalStorage
@@ -163,8 +156,8 @@
         </div>
       </div>
       <div class="setting-drawer-index-handle" @click="toggle" slot="handle">
-        <a-icon type="setting" v-if="!visible"/>
-        <a-icon type="close" v-else/>
+        <a-icon type="setting" v-if="!visible" />
+        <a-icon type="close" v-else />
       </div>
     </a-drawer>
   </div>
@@ -174,170 +167,196 @@
 import SettingItem from './SettingItem'
 import config from '@/config/defaultSettings'
 import { updateTheme, updateColorWeak, colorList } from './settingConfig'
+// import { baseMixin as mixin } from '@/store/app-mixin'
 
 export default {
   components: {
     SettingItem
   },
-  mixins: [],
-  data () {
+  // mixins: [mixin],
+  props: {
+    layout: { type: String, default: 'sidemenu' },
+    contentWidth: { type: String, default: 'Fluid' },
+    theme: { type: String, default: 'dark' },
+    primaryColor: { type: String, default: '#F5222D' },
+    fixedHeader: { type: Boolean, default: false },
+    fixSiderbar: { type: Boolean, default: false },
+    colorWeak: { type: Boolean, default: false },
+    multiTab: { type: Boolean, default: false },
+    autoHideHeader: { type: Boolean, default: false }
+  },
+  data() {
     return {
       visible: false,
       colorList
     }
   },
-  watch: {
-
-  },
-  mounted () {
+  watch: {},
+  mounted() {
     updateTheme(this.primaryColor)
     if (this.colorWeak !== config.colorWeak) {
       updateColorWeak(this.colorWeak)
     }
   },
   methods: {
-    showDrawer () {
+    showDrawer() {
       this.visible = true
     },
-    onClose () {
+    onClose() {
       this.visible = false
     },
-    toggle () {
+    toggle() {
       this.visible = !this.visible
     },
-    onColorWeak (checked) {
+    onColorWeak(checked) {
       this.$store.dispatch('ToggleWeak', checked)
       updateColorWeak(checked)
+      this.$emit('change', { type: 'colorWeak', value: checked })
     },
-    onMultiTab (checked) {
+    onMultiTab(checked) {
       this.$store.dispatch('ToggleMultiTab', checked)
+      this.$emit('change', { type: 'multiTab', value: checked })
     },
-    handleMenuTheme (theme) {
+    handleMenuTheme(theme) {
       this.$store.dispatch('ToggleTheme', theme)
+      this.$emit('change', { type: 'theme', value: theme })
     },
-    doCopy () {
+    doCopy() {
       // get current settings from mixin or this.$store.state.app, pay attention to the property name
       const text = `export default {
+  navTheme: '${this.theme}', // theme for nav menu
   primaryColor: '${this.primaryColor}', // primary color of ant design
-  navTheme: '${this.navTheme}', // theme for nav menu
-  layout: '${this.layoutMode}', // nav menu position: sidemenu or topmenu
+  layout: '${this.layout}', // nav menu position: sidemenu or topmenu
   contentWidth: '${this.contentWidth}', // layout of content: Fluid or Fixed, only works when layout is topmenu
   fixedHeader: ${this.fixedHeader}, // sticky header
   fixSiderbar: ${this.fixSiderbar}, // sticky siderbar
-  autoHideHeader: ${this.autoHideHeader}, //  auto hide header
-  colorWeak: ${this.colorWeak},
-  multiTab: ${this.multiTab},
+  colorWeak: ${this.colorWeak}, // 色弱模式
+  multiTab: ${this.multiTab}, // 开启多标签模式
+  menu: {
+    locale: false
+  },
+  title: 'Ant Design Pro',
+  pwa: false,
+  iconfontUrl: '',
+  autoHideHeader: ${this.autoHideHeader}, //  auto hide header 不知还有没有用
   production: process.env.NODE_ENV === 'production' && process.env.VUE_APP_PREVIEW !== 'true'
 }`
-      this.$copyText(text).then(message => {
-        console.log('copy', message)
-        this.$message.success('复制完毕')
-      }).catch(err => {
-        console.log('copy.err', err)
-        this.$message.error('复制失败')
-      })
+      this.$copyText(text)
+        .then(message => {
+          console.log('copy', message)
+          this.$message.success('复制完毕')
+        })
+        .catch(err => {
+          console.log('copy.err', err)
+          this.$message.error('复制失败')
+        })
     },
-    handleLayout (mode) {
+    handleLayout(mode) {
       this.$store.dispatch('ToggleLayoutMode', mode)
       // 因为顶部菜单不能固定左侧菜单栏，所以强制关闭
       this.handleFixSiderbar(false)
+      this.$emit('change', { type: 'layout', value: mode })
     },
-    handleContentWidthChange (type) {
+    handleContentWidthChange(type) {
       this.$store.dispatch('ToggleContentWidth', type)
+      this.$emit('change', { type: 'contentWidth', value: type })
     },
-    changeColor (color) {
+    changeColor(color) {
       if (this.primaryColor !== color) {
         this.$store.dispatch('ToggleColor', color)
         updateTheme(color)
+        this.$emit('change', { type: 'primaryColor', value: color })
       }
     },
-    handleFixedHeader (fixed) {
+    handleFixedHeader(fixed) {
       this.$store.dispatch('ToggleFixedHeader', fixed)
+      this.$emit('change', { type: 'fixedHeader', value: fixed })
     },
-    handleFixedHeaderHidden (autoHidden) {
+    handleFixedHeaderHidden(autoHidden) {
       this.$store.dispatch('ToggleFixedHeaderHidden', autoHidden)
+      this.$emit('change', { type: 'autoHideHeader', value: autoHidden })
     },
-    handleFixSiderbar (fixed) {
-      if (this.layoutMode === 'topmenu') {
+    handleFixSiderbar(fixed) {
+      if (this.layout === 'topmenu') {
         this.$store.dispatch('ToggleFixSiderbar', false)
+        this.$emit('change', { type: 'fixSiderbar', value: false })
         return
       }
       this.$store.dispatch('ToggleFixSiderbar', fixed)
+      this.$emit('change', { type: 'fixSiderbar', value: fixed })
     }
   }
 }
 </script>
 
 <style lang="less" scoped>
+.setting-drawer-index-content {
+  .setting-drawer-index-blockChecbox {
+    display: flex;
 
-  .setting-drawer-index-content {
-
-    .setting-drawer-index-blockChecbox {
-      display: flex;
-
-      .setting-drawer-index-item {
-        margin-right: 16px;
-        position: relative;
-        border-radius: 4px;
-        cursor: pointer;
-
-        img {
-          width: 48px;
-        }
-
-        .setting-drawer-index-selectIcon {
-          position: absolute;
-          top: 0;
-          right: 0;
-          width: 100%;
-          padding-top: 15px;
-          padding-left: 24px;
-          height: 100%;
-          color: #1890ff;
-          font-size: 14px;
-          font-weight: 700;
-        }
-      }
-    }
-    .setting-drawer-theme-color-colorBlock {
-      width: 20px;
-      height: 20px;
-      border-radius: 2px;
-      float: left;
+    .setting-drawer-index-item {
+      margin-right: 16px;
+      position: relative;
+      border-radius: 4px;
       cursor: pointer;
-      margin-right: 8px;
-      padding-left: 0px;
-      padding-right: 0px;
-      text-align: center;
-      color: #fff;
-      font-weight: 700;
 
-      i {
+      img {
+        width: 48px;
+      }
+
+      .setting-drawer-index-selectIcon {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        padding-top: 15px;
+        padding-left: 24px;
+        height: 100%;
+        color: #1890ff;
         font-size: 14px;
+        font-weight: 700;
       }
     }
   }
-
-  .setting-drawer-index-handle {
-    position: absolute;
-    top: 240px;
-    background: #1890ff;
-    width: 48px;
-    height: 48px;
-    right: 300px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  .setting-drawer-theme-color-colorBlock {
+    width: 20px;
+    height: 20px;
+    border-radius: 2px;
+    float: left;
     cursor: pointer;
-    pointer-events: auto;
-    z-index: 1001;
+    margin-right: 8px;
+    padding-left: 0px;
+    padding-right: 0px;
     text-align: center;
-    font-size: 16px;
-    border-radius: 4px 0 0 4px;
+    color: #fff;
+    font-weight: 700;
 
     i {
-      color: rgb(255, 255, 255);
-      font-size: 20px;
+      font-size: 14px;
     }
   }
+}
+
+.setting-drawer-index-handle {
+  position: absolute;
+  top: 240px;
+  background: #1890ff;
+  width: 48px;
+  height: 48px;
+  right: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  pointer-events: auto;
+  z-index: 1001;
+  text-align: center;
+  font-size: 16px;
+  border-radius: 4px 0 0 4px;
+
+  i {
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+  }
+}
 </style>

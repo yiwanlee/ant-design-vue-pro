@@ -100,6 +100,45 @@ const app = {
           reject(e)
         })
       })
+    },
+    setSidebar ({ commit }, type) {
+      commit(SIDEBAR_TYPE, type)
+    },
+    // CloseSidebar ({ commit }) {
+    //   commit('CLOSE_SIDEBAR')
+    // },
+    // ToggleDevice ({ commit }, device) {
+    //   commit('TOGGLE_DEVICE', device)
+    // },
+    ToggleTheme ({ commit }, theme) {
+      commit(TOGGLE_NAV_THEME, theme)
+    },
+    ToggleLayoutMode ({ commit }, mode) {
+      commit(TOGGLE_LAYOUT, mode)
+    },
+    ToggleFixedHeader ({ commit }, fixedHeader) {
+      if (!fixedHeader) {
+        commit(TOGGLE_HIDE_HEADER, false)
+      }
+      commit(TOGGLE_FIXED_HEADER, fixedHeader)
+    },
+    ToggleFixSiderbar ({ commit }, fixSiderbar) {
+      commit(TOGGLE_FIXED_SIDEBAR, fixSiderbar)
+    },
+    ToggleFixedHeaderHidden ({ commit }, show) {
+      commit(TOGGLE_HIDE_HEADER, show)
+    },
+    ToggleContentWidth ({ commit }, type) {
+      commit(TOGGLE_CONTENT_WIDTH, type)
+    },
+    ToggleColor ({ commit }, color) {
+      commit(TOGGLE_COLOR, color)
+    },
+    ToggleWeak ({ commit }, weakFlag) {
+      commit(TOGGLE_WEAK, weakFlag)
+    },
+    ToggleMultiTab ({ commit }, bool) {
+      commit(TOGGLE_MULTI_TAB, bool)
     }
   }
 }

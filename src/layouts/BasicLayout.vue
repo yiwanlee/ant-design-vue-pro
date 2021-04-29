@@ -13,7 +13,7 @@
       广告代码 真实项目中请移除
       production remove this Ads
     -->
-    <ads v-if="isProPreviewSite && !collapsed"/>
+    <ads v-if="isProPreviewSite && !collapsed" />
     <!-- Ads end -->
 
     <!-- 1.0.0+ 版本 pro-layout 提供 API，
@@ -31,12 +31,12 @@
     <template v-slot:headerContentRender>
       <div>
         <a-tooltip title="刷新页面">
-          <a-icon :type="routerActive?'reload':'loading'" :spin="!routerActive" style="font-size: 18px;cursor: pointer;" @click="handleRefresh" />
+          <a-icon :type="routerActive ? 'reload' : 'loading'" :spin="!routerActive" style="font-size: 18px;cursor: pointer;" @click="handleRefresh" />
         </a-tooltip>
       </div>
     </template>
 
-    <setting-drawer :settings="settings" @change="handleSettingChange">
+    <setting-drawer v-bind="settings" @change="handleSettingChange" v-if="!production">
       <div style="margin: 12px 0;">
         This is SettingDrawer custom footer content.
       </div>
@@ -53,7 +53,8 @@
 </template>
 
 <script>
-import { SettingDrawer, updateTheme } from '@ant-design-vue/pro-layout'
+import { updateTheme } from '@ant-design-vue/pro-layout'
+import SettingDrawer from '@/components/SettingDrawer'
 import { i18nRender } from '@/locales'
 import { mapState } from 'vuex'
 import { CONTENT_WIDTH_TYPE, SIDEBAR_TYPE, TOGGLE_MOBILE_TYPE, ROUTER_ACTIVE } from '@/store/mutation-types'
@@ -73,12 +74,12 @@ export default {
     LogoSvg,
     Ads
   },
-  data () {
+  data() {
     return {
       // preview.pro.antdv.com only use.
       isProPreviewSite: process.env.VUE_APP_PREVIEW === 'true' && process.env.NODE_ENV !== 'development',
       // end
-
+      production: defaultSettings.production,
       // base
       menus: [],
       // 侧栏收起状态
@@ -96,6 +97,8 @@ export default {
         fixedHeader: defaultSettings.fixedHeader,
         fixSiderbar: defaultSettings.fixSiderbar,
         colorWeak: defaultSettings.colorWeak,
+        multiTab: defaultSettings.multiTab,
+        autoHideHeader: defaultSettings.autoHideHeader,
 
         hideHintAlert: false,
         hideCopyButton: false
@@ -115,7 +118,7 @@ export default {
       routerActive: state => state.app.routerActive
     })
   },
-  created () {
+  created() {
     const routes = this.mainMenu.find(item => item.path === '/')
     this.menus = (routes && routes.children) || []
     // 处理侧栏收起状态
@@ -126,7 +129,7 @@ export default {
       this.$store.commit(TOGGLE_MOBILE_TYPE, this.isMobile)
     })
   },
-  mounted () {
+  mounted() {
     const userAgent = navigator.userAgent
     if (userAgent.indexOf('Edge') > -1) {
       this.$nextTick(() => {
@@ -145,7 +148,7 @@ export default {
   },
   methods: {
     i18nRender,
-    handleMediaQuery (val) {
+    handleMediaQuery(val) {
       this.query = val
       if (this.isMobile && !val['screen-xs']) {
         this.isMobile = false
@@ -158,10 +161,10 @@ export default {
         // this.settings.fixSiderbar = false
       }
     },
-    handleCollapse (val) {
+    handleCollapse(val) {
       this.collapsed = val
     },
-    handleSettingChange ({ type, value }) {
+    handleSettingChange({ type, value }) {
       console.log('type', type, value)
       type && (this.settings[type] = value)
       switch (type) {
@@ -178,7 +181,7 @@ export default {
           break
       }
     },
-    handleRefresh () {
+    handleRefresh() {
       this.$store.commit(ROUTER_ACTIVE)
       setTimeout(() => {
         this.$store.commit(ROUTER_ACTIVE)
@@ -189,5 +192,5 @@ export default {
 </script>
 
 <style lang="less">
-@import "./BasicLayout.less";
+@import './BasicLayout.less';
 </style>
