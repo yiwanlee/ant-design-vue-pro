@@ -24,7 +24,7 @@
     <template v-slot:headerContentRender>
       <div>
         <a-tooltip title="刷新页面">
-          <a-icon :type="routerActive ? 'reload' : 'loading'" :spin="!routerActive" style="font-size: 18px;cursor: pointer;" @click="handleRefresh" />
+          <a-icon :type="routerActive ? 'reload' : 'loading'" style="font-size: 18px;cursor: pointer;" @click="handleRefresh" />
         </a-tooltip>
       </div>
     </template>
@@ -34,13 +34,22 @@
         This is SettingDrawer custom footer content.
       </div>
     </setting-drawer>
+
     <template v-slot:rightContentRender>
       <right-content :top-menu="settings.layout === 'topmenu'" :is-mobile="isMobile" :theme="settings.theme" />
     </template>
+
     <!-- custom footer / 自定义Footer -->
     <template v-slot:footerRender>
       <global-footer />
     </template>
+
+    <!-- 多页签支持代码 -->
+    <a-layout-content v-if="settings.multiTab" :style="{ height: '100%', margin: '0 0 24px 0', paddingTop: '0' }">
+      <multi-tab v-if="settings.multiTab"></multi-tab>
+      <transition name="page-transition"></transition>
+    </a-layout-content>
+
     <router-view v-if="routerActive" />
   </pro-layout>
 </template>
@@ -56,6 +65,7 @@ import defaultSettings from '@/config/defaultSettings'
 import RightContent from '@/components/GlobalHeader/RightContent'
 import GlobalFooter from '@/components/GlobalFooter'
 import LogoSvg from '../assets/logo.svg?inline'
+import MultiTab from '@/components/MultiTab'
 
 export default {
   name: 'BasicLayout',
@@ -63,7 +73,8 @@ export default {
     SettingDrawer,
     RightContent,
     GlobalFooter,
-    LogoSvg
+    LogoSvg,
+    MultiTab
   },
   data() {
     return {

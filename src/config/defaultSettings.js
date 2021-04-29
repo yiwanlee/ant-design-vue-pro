@@ -21,7 +21,7 @@ export default {
   fixedHeader: false, // sticky header
   fixSiderbar: false, // sticky siderbar
   colorWeak: false, // 色弱模式
-  multiTab: false, // 开启多标签模式
+  multiTab: true, // 开启多标签模式
   menu: {
     locale: false
   },
