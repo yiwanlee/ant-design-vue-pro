@@ -22,7 +22,7 @@
           增加 Header 左侧内容区自定义
     -->
     <template v-slot:headerContentRender>
-      <div>
+      <div v-if="!settings.multiTab">
         <a-tooltip title="刷新页面">
           <a-icon :type="routerActive ? 'reload' : 'loading'" style="font-size: 18px;cursor: pointer;" @click="handleRefresh" />
         </a-tooltip>

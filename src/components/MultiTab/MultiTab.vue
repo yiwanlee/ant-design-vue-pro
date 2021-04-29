@@ -139,7 +139,19 @@ export default {
 
       return (
         <a-dropdown overlay={menu} trigger={['contextmenu']}>
-          <span style={{ userSelect: 'none' }}>{this.$t(title)}</span>
+          <span style={{ userSelect: 'none' }}>
+            {this.$t(title)}
+            <span
+              tabindex="-1"
+              hidden={keyPath !== this.activeKey}
+              role="img"
+              aria-label="reload"
+              {...{ on: { click: this.routerRefresh } }}
+              style="margin-left:10px;margin-right:-4px;color:rgba(0,0,0,.45);"
+            >
+              <a-icon type={this.routerActive ? 'reload' : 'loading'} style="font-size:12px;cursor:pointer;" />
+            </span>
+          </span>
         </a-dropdown>
       )
     }
