@@ -91,8 +91,8 @@
                     该设定仅 [顶部栏导航] 时有效
                   </template>
                   <a-select size="small" style="width: 80px;" :defaultValue="contentWidth" @change="handleContentWidthChange">
-                    <a-select-option value="Fixed">固定</a-select-option>
-                    <a-select-option value="Fluid" v-if="layout !== 'sidemenu'">流式</a-select-option>
+                    <a-select-option value="Fluid">流式</a-select-option>
+                    <a-select-option value="Fixed" v-if="layout === 'topmenu'">固定</a-select-option>
                   </a-select>
                 </a-tooltip>
                 <a-list-item-meta>
@@ -110,7 +110,7 @@
                 <a-list-item-meta>
                   <a-tooltip slot="title" placement="left">
                     <template slot="title">固定 Header 时可配置</template>
-                    <div :style="{ opacity: !fixedHeader ? '0.5' : '1',textDecoration: 'line-through' }">下滑时隐藏 Header</div>
+                    <div :style="{ opacity: !fixedHeader ? '0.5' : '1', textDecoration: 'line-through' }">下滑时隐藏 Header</div>
                   </a-tooltip>
                 </a-list-item-meta>
               </a-list-item>

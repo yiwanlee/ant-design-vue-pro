@@ -167,21 +167,23 @@ export default {
       this.collapsed = val
     },
     handleSettingChange({ type, value }) {
-      console.log('type', type, value)
-      type && (this.settings[type] = value)
+      const settings = { ...this.settings }
+      type && (settings[type] = value)
       switch (type) {
         case 'contentWidth':
-          this.settings[type] = value
+         settings[type] = value
           break
         case 'layout':
           if (value === 'sidemenu') {
-            this.settings.contentWidth = CONTENT_WIDTH_TYPE.Fluid
+           settings.contentWidth = CONTENT_WIDTH_TYPE.Fluid
           } else {
-            this.settings.fixSiderbar = false
-            this.settings.contentWidth = CONTENT_WIDTH_TYPE.Fixed
+            settings.contentWidth = CONTENT_WIDTH_TYPE.Fixed
+            settings.fixSiderbar = false
           }
           break
       }
+      console.log(settings)
+      this.settings = settings
     },
     handleRefresh() {
       this.$store.commit(ROUTER_ACTIVE)
