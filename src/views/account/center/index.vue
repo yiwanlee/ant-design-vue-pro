@@ -1,6 +1,6 @@
 <template>
   <div class="page-header-index-wide page-header-wrapper-grid-content-main">
-    <a-row :gutter="24">
+    <a-row :gutter="12">
       <a-col :md="24" :lg="7">
         <a-card :bordered="false">
           <div class="account-center-avatarHolder">

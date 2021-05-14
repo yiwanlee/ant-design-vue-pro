@@ -59,7 +59,7 @@
       </a-form>
     </a-card>
 
-    <a-card style="margin-top: 24px;" :bordered="false">
+    <a-card style="margin-top: 12px;" :bordered="false">
       <a-list
         size="large"
         rowKey="id"

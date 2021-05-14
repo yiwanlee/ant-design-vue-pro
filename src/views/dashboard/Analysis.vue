@@ -1,7 +1,7 @@
 <template>
   <div>
-    <a-row :gutter="24">
-      <a-col :sm="24" :md="12" :xl="6" :style="{ marginBottom: '24px' }">
+    <a-row :gutter="12">
+      <a-col :sm="24" :md="12" :xl="6" :style="{ marginBottom: '12px' }">
         <chart-card :loading="loading" :title="$t('dashboard.analysis.total-sales')" total="￥126,560">
           <a-tooltip :title="$t('dashboard.analysis.introduce')" slot="action">
             <a-icon type="info-circle-o" />
@@ -19,7 +19,7 @@
           <template slot="footer">{{ $t('dashboard.analysis.day-sales') }}<span>￥ 234.56</span></template>
         </chart-card>
       </a-col>
-      <a-col :sm="24" :md="12" :xl="6" :style="{ marginBottom: '24px' }">
+      <a-col :sm="24" :md="12" :xl="6" :style="{ marginBottom: '12px' }">
         <chart-card :loading="loading" :title="$t('dashboard.analysis.visits')" :total="8846 | NumberFormat">
           <a-tooltip :title="$t('dashboard.analysis.introduce')" slot="action">
             <a-icon type="info-circle-o" />
@@ -30,7 +30,7 @@
           <template slot="footer">{{ $t('dashboard.analysis.day-visits') }}<span> {{ '1234' | NumberFormat }}</span></template>
         </chart-card>
       </a-col>
-      <a-col :sm="24" :md="12" :xl="6" :style="{ marginBottom: '24px' }">
+      <a-col :sm="24" :md="12" :xl="6" :style="{ marginBottom: '12px' }">
         <chart-card :loading="loading" :title="$t('dashboard.analysis.payments')" :total="6560 | NumberFormat">
           <a-tooltip :title="$t('dashboard.analysis.introduce')" slot="action">
             <a-icon type="info-circle-o" />
@@ -41,7 +41,7 @@
           <template slot="footer">{{ $t('dashboard.analysis.conversion-rate') }} <span>60%</span></template>
         </chart-card>
       </a-col>
-      <a-col :sm="24" :md="12" :xl="6" :style="{ marginBottom: '24px' }">
+      <a-col :sm="24" :md="12" :xl="6" :style="{ marginBottom: '12px' }">
         <chart-card :loading="loading" :title="$t('dashboard.analysis.operational-effect')" total="78%">
           <a-tooltip :title="$t('dashboard.analysis.introduce')" slot="action">
             <a-icon type="info-circle-o" />
@@ -65,7 +65,7 @@
 
     <a-card :loading="loading" :bordered="false" :body-style="{padding: '0'}">
       <div class="salesCard">
-        <a-tabs default-active-key="1" size="large" :tab-bar-style="{marginBottom: '24px', paddingLeft: '16px'}">
+        <a-tabs default-active-key="1" size="large" :tab-bar-style="{marginBottom: '12px', paddingLeft: '16px'}">
           <div class="extra-wrapper" slot="tabBarExtraContent">
             <div class="extra-item">
               <a>{{ $t('dashboard.analysis.all-day') }}</a>
@@ -100,7 +100,7 @@
     </a-card>
 
     <div class="antd-pro-pages-dashboard-analysis-twoColLayout" :class="!isMobile && 'desktop'">
-      <a-row :gutter="24" type="flex" :style="{ marginTop: '24px' }">
+      <a-row :gutter="24" type="flex" :style="{ marginTop: '12px' }">
         <a-col :xl="12" :lg="24" :md="24" :sm="24" :xs="24">
           <a-card :loading="loading" :bordered="false" :title="$t('dashboard.analysis.online-top-search')" :style="{ height: '100%' }">
             <a-dropdown :trigger="['click']" placement="bottomLeft" slot="extra">
@@ -117,7 +117,7 @@
               </a-menu>
             </a-dropdown>
             <a-row :gutter="68">
-              <a-col :xs="24" :sm="12" :style="{ marginBottom: ' 24px'}">
+              <a-col :xs="24" :sm="12" :style="{ marginBottom: '12px'}">
                 <number-info :total="12321" :sub-total="17.1">
                   <span slot="subtitle">
                     <span>{{ $t('dashboard.analysis.search-users') }}</span>
@@ -131,7 +131,7 @@
                   <mini-smooth-area :style="{ height: '45px' }" :dataSource="searchUserData" :scale="searchUserScale" />
                 </div>
               </a-col>
-              <a-col :xs="24" :sm="12" :style="{ marginBottom: ' 24px'}">
+              <a-col :xs="24" :sm="12" :style="{ marginBottom: '12px'}">
                 <number-info :total="2.7" :sub-total="26.2" status="down">
                   <span slot="subtitle">
                     <span>{{ $t('dashboard.analysis.per-capita-search') }}</span>

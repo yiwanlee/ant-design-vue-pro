@@ -285,7 +285,7 @@ export default {
 
 <style lang="less" scoped>
   .card{
-    margin-bottom: 24px;
+    margin-bottom: 12px;
   }
   .popover-wrapper {
     /deep/ .antd-pro-pages-forms-style-errorPopover .ant-popover-inner-content {

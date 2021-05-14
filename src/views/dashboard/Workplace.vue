@@ -28,12 +28,12 @@
     </template>
 
     <div>
-      <a-row :gutter="24">
+      <a-row :gutter="12">
         <a-col :xl="16" :lg="24" :md="24" :sm="24" :xs="24">
           <a-card
             class="project-list"
             :loading="loading"
-            style="margin-bottom: 24px;"
+            style="margin-bottom: 12px;"
             :bordered="false"
             title="进行中的项目"
             :body-style="{ padding: 0 }">
@@ -77,13 +77,13 @@
           </a-card>
         </a-col>
         <a-col
-          style="padding: 0 12px"
+          style="padding: 0 6px"
           :xl="8"
           :lg="24"
           :md="24"
           :sm="24"
           :xs="24">
-          <a-card title="快速开始 / 便捷导航" style="margin-bottom: 24px" :bordered="false" :body-style="{padding: 0}">
+          <a-card title="快速开始 / 便捷导航" style="margin-bottom: 12px" :bordered="false" :body-style="{padding: 0}">
             <div class="item-group">
               <a>操作一</a>
               <a>操作二</a>
@@ -96,7 +96,7 @@
           </a-card>
           <a-card
             title="XX 指数"
-            style="margin-bottom: 24px"
+            style="margin-bottom: 12px"
             :loading="radarLoading"
             :bordered="false"
             :body-style="{ padding: 0 }">
@@ -328,7 +328,7 @@ export default {
   }
 
   .item-group {
-    padding: 20px 0 8px 24px;
+    padding: 20px 0 8px 12px;
     font-size: 0;
 
     a {

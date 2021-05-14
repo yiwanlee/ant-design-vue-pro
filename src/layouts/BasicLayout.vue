@@ -45,7 +45,7 @@
     </template>
 
     <!-- 多页签支持代码 -->
-    <a-layout-content v-if="settings.multiTab" :style="{ height: '100%', margin: '0 0 24px 0', paddingTop: '0' }">
+    <a-layout-content v-if="settings.multiTab" :style="{ height: '100%', margin: '0 0 12px 0', paddingTop: '0' }">
       <multi-tab v-if="settings.multiTab"></multi-tab>
       <transition name="page-transition"></transition>
     </a-layout-content>

@@ -15,7 +15,7 @@
     </a-card>
 
     <a-card
-      style="margin-top: 24px"
+      style="margin-top: 12px"
       :bordered="false"
       title="标准列表">
 

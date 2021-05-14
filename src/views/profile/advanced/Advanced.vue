@@ -70,7 +70,7 @@
       </a-steps>
     </a-card>
 
-    <a-card style="margin-top: 24px" :bordered="false" title="用户信息">
+    <a-card style="margin-top: 12px" :bordered="false" title="用户信息">
       <a-descriptions>
         <a-descriptions-item label="用户姓名">付晓晓</a-descriptions-item>
         <a-descriptions-item label="会员卡号">32943898021309809423</a-descriptions-item>
@@ -107,13 +107,13 @@
 
     </a-card>
 
-    <a-card style="margin-top: 24px" :bordered="false" title="用户近半年来电记录">
+    <a-card style="margin-top: 12px" :bordered="false" title="用户近半年来电记录">
       <div class="no-data"><a-icon type="frown-o"/>暂无数据</div>
     </a-card>
 
     <!-- 操作 -->
     <a-card
-      style="margin-top: 24px"
+      style="margin-top:12px"
       :bordered="false"
       :tabList="operationTabList"
       :activeTabKey="operationActiveTabKey"
