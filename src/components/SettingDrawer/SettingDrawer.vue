@@ -106,11 +106,11 @@
                 </a-list-item-meta>
               </a-list-item>
               <a-list-item>
-                <a-switch slot="actions" size="small" :disabled="!fixedHeader" :defaultChecked="autoHideHeader" @change="handleFixedHeaderHidden" />
+                <a-switch slot="actions" size="small" :disabled="true" :defaultChecked="autoHideHeader" @change="handleFixedHeaderHidden" />
                 <a-list-item-meta>
                   <a-tooltip slot="title" placement="left">
                     <template slot="title">固定 Header 时可配置</template>
-                    <div :style="{ opacity: !fixedHeader ? '0.5' : '1' }">下滑时隐藏 Header</div>
+                    <div :style="{ opacity: !fixedHeader ? '0.5' : '1',textDecoration: 'line-through' }">下滑时隐藏 Header</div>
                   </a-tooltip>
                 </a-list-item-meta>
               </a-list-item>
