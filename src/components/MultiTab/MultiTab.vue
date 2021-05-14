@@ -125,11 +125,9 @@ export default {
             }
           }}
         >
-          <a-menu-item key="routerRefresh">刷新标签</a-menu-item>
-          <a-menu-item key="closeThat">关闭标签</a-menu-item>
+          <a-menu-item key="routerRefresh">重新加载</a-menu-item>
           <a-menu-item key="closeRight">关闭右侧</a-menu-item>
-          <a-menu-item key="closeLeft">关闭左侧</a-menu-item>
-          <a-menu-item key="closeAll">关闭全部</a-menu-item>
+          <a-menu-item key="closeAll">关闭其他</a-menu-item>
         </a-menu>
       )
     },
